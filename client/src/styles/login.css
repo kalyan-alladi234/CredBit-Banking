@@ -1,0 +1,160 @@
+/* 🌌 MAIN CONTAINER */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+
+  position: relative;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", sans-serif;
+}
+
+/* ✨ PREMIUM GLOW EFFECT */
+.login-container::after {
+  content: "";
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 0;
+}
+
+/* 💳 GLASS LOGIN CARD */
+.login-card {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 50px 40px;
+  border-radius: 24px;
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+
+  color: #fff;
+
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+
+  animation: fadeIn 0.6s ease;
+
+  position: relative;
+  z-index: 10;
+}
+
+/* 🏦 LOGO TEXT */
+.logo {
+  font-size: 32px;
+  margin-bottom: 8px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* ✨ SUBTITLE */
+.subtitle {
+  font-size: 15px;
+  margin-bottom: 30px;
+  opacity: 0.85;
+}
+
+/* 🧾 INPUT FIELDS */
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.25);
+
+  outline: none;
+  font-size: 15px;
+
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+
+  transition: all 0.3s ease;
+}
+
+.input::placeholder {
+  color: rgba(255,255,255,0.7);
+}
+
+.input:focus {
+  border-color: #fff;
+  background: rgba(255,255,255,0.2);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
+}
+
+/* 🔘 BUTTON */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #ffffff, #dfe3ff);
+  color: #4e54c8;
+
+  font-weight: 600;
+  font-size: 15px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  margin-top: 8px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.3);
+}
+
+.login-btn:active {
+  transform: scale(0.98);
+}
+
+/* 📎 TEXT */
+.bottom-text {
+  margin-top: 22px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.clickable {
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.clickable:hover {
+  opacity: 0.8;
+}
+
+/* ✨ ENTRY ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
