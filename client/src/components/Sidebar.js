@@ -1,7 +1,7 @@
 export default function Sidebar({ active, setActive }) {
   const menuItems = [
     { id: "dashboard", icon: "🏠", label: "Dashboard" },
-    { id: "transactions", icon: "💳", label: "Transactions" },
+    { id: "transactions", icon: "📠", label: "Transactions" },
     { id: "profile", icon: "👤", label: "Profile" },
   ];
 

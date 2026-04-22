@@ -1,52 +1,52 @@
 const Transaction = require("../models/Transaction");
 const User = require("../models/User");
 
-exports.deposit = async (req, res) => {
+const deposit = async (req, res) => {
   const { amount } = req.body;
+
+  // 🚨 Validation
+  if (!amount || amount <= 0) {
+    return res.status(400).json({ msg: "Amount must be greater than 0" });
+  }
 
   const user = await User.findById(req.user.id);
 
-  const before = user.balance;
   user.balance += amount;
   await user.save();
-
-  const after = user.balance;
 
   await Transaction.create({
     user: user._id,
     type: "deposit",
-    amount,
-    balanceBefore: before,
-    balanceAfter: after
+    amount
   });
 
-  res.json({ balance: after });
+  res.json({ msg: "Deposit successful", balance: user.balance });
 };
 
-exports.withdraw = async (req, res) => {
+const withdraw = async (req, res) => {
   const { amount } = req.body;
+
+  // 🚨 Validation
+  if (!amount || amount <= 0) {
+    return res.status(400).json({ msg: "Amount must be greater than 0" });
+  }
 
   const user = await User.findById(req.user.id);
 
   if (user.balance < amount) {
-    return res.status(400).json("Insufficient balance");
+    return res.status(400).json({ msg: "Insufficient balance" });
   }
 
-  const before = user.balance;
   user.balance -= amount;
   await user.save();
-
-  const after = user.balance;
 
   await Transaction.create({
     user: user._id,
     type: "withdraw",
-    amount,
-    balanceBefore: before,
-    balanceAfter: after
+    amount
   });
 
-  res.json({ balance: after });
+  res.json({ msg: "Withdraw successful", balance: user.balance });
 };
 
 exports.getTransactions = async (req, res) => {
